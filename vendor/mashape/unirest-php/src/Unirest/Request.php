@@ -233,11 +233,11 @@ class Request
      */
     public static function get($url, $headers = array(), $parameters = null, $username = null, $password = null)
     {
-        /*var_dump($url);
-        var_dump($parameters);
-        print_r($username);
-        print_r($password);
-        */
+//        var_dump($url);
+//        var_dump($parameters);
+//        print_r($username);
+//        print_r($password);
+
         return self::send(Method::GET, $url, $parameters, $headers, $username, $password);
     }
 

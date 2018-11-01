@@ -418,8 +418,9 @@ class Request
             $url .= urldecode(http_build_query(self::buildHTTPCurlQuery($body)));
         }
 
-        print_r($url);
-        echo "\n";
+        // TODO _OLEG_
+//        print_r($url);
+//        echo "\n";
 
         $curl_base_options = [
             CURLOPT_URL => self::encodeUrl($url),

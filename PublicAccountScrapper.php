@@ -46,7 +46,7 @@ class PublicAccountScrapper {
             }
         }
 
-        $this->writeToCsvFile($this->mediasToCsv);
+        $this->writeToCsvFile($this->mediasToCsv, $userName, $startDate, $endDate);
     }
 
     /**
@@ -54,12 +54,12 @@ class PublicAccountScrapper {
      */
     protected function getCsvHeader()
     {
-        $mediaCsv['caption'] = "Заголовок";
+        $mediaCsv['link'] = 'Cсылка';
         $mediaCsv['comment_number'] = 'Количество коментариев';
         $mediaCsv['likes_number'] = 'Количество лайков';
         $mediaCsv['media_type'] = 'Медиа тип';
         $mediaCsv['created_at'] = 'Пост создан';
-        $mediaCsv['link'] = 'Cсылка';
+        $mediaCsv['caption'] = "Заголовок";
 
         return $mediaCsv;
     }
@@ -67,9 +67,10 @@ class PublicAccountScrapper {
     /**
      * @param $datas
      */
-    protected function writeToCsvFile($datas)
+    protected function writeToCsvFile($datas, $userName, $startDate, $endDate)
     {
-        $output = fopen("file.csv",'w') or die("Can't open php://output");
+        $fileName = $userName ."_". $startDate ."_". $endDate;
+        $output = fopen($fileName,'w') or die("Can't open php://output");
         fputcsv($output, $this->getCsvHeader());
 
         foreach($datas as $data) {
@@ -77,6 +78,7 @@ class PublicAccountScrapper {
         }
 
         fclose($output) or die("Can't close php://output");
+        echo 'Скачиваем Файл:</br><a href="'.$fileName.'">' . $fileName . '</a></br>';
     }
 
 

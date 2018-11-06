@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-$account = (new \InstagramScraper\Instagram())->getAccountById('3');
+$account = (new \InstagramScraper\Instagram())->getAccountById('456931526');
 
 // Available fields
 echo "Account info:\n";

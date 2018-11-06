@@ -66,6 +66,7 @@ class PublicAccountScrapper {
         $mediaCsv['comment_number'] = 'Количество коментариев';
         $mediaCsv['likes_number'] = 'Количество лайков';
         $mediaCsv['media_type'] = 'Медиа тип';
+        $mediaCsv['video_view'] = 'Просмотры видео';
         $mediaCsv['created_at'] = 'Пост создан';
         $mediaCsv['actions_summ'] = 'Сумма действий';
         $mediaCsv['caption'] = "Заголовок";
@@ -100,6 +101,7 @@ class PublicAccountScrapper {
         $mediaCsv['comment_number'] = $media->getCommentsCount();
         $mediaCsv['likes_number'] = $media->getLikesCount();
         $mediaCsv['media_type'] = $media->getType();
+        $mediaCsv['video_view'] = $media->getVideoViews();
         $mediaCsv['created_at'] = date("Y-m-d H:i:s", $media->getCreatedTime());
         $mediaCsv['actions_summ'] = (int) $media->getLikesCount() + (int) $media->getCommentsCount();
         $mediaCsv['caption'] = $media->getCaption();

@@ -23,6 +23,8 @@ class getMediaByUserName {
 
         foreach ($medias as $media) {
 
+            print_r($media); exit;
+
             echo "Media info:\n";
             echo "Id: {$media->getId()}\n";
             echo "Shotrcode: {$media->getShortCode()}\n";
@@ -54,7 +56,34 @@ class getMediaByUserName {
     }
 
 
+
+
     protected function getPostsByPeriod($startPeriod, $endPeriod) {
+        $medias = $this->instagramm->getMedias($this->accUsername, $this->postsCount);
+        $aa = 0;
+
+        foreach ($medias as $media) {
+
+//            echo "Media info:\n";
+//            echo "Id: {$media->getId()}\n";
+//            echo "Shotrcode: {$media->getShortCode()}\n";
+//            echo "Created at: {$media->getCreatedTime()}\n";
+//            echo "Caption: {$media->getCaption()}\n";
+//            echo "Number of comments: {$media->getCommentsCount()}\n";
+//            echo "Number of likes: {$media->getLikesCount()}\n";
+//            echo "Get link: {$media->getLink()}\n";
+//            echo "High resolution image: {$media->getImageHighResolutionUrl()}\n";
+//            echo "Media type (video or image): {$media->getType()}\n";
+
+//            $aa++;
+//            if ($aa >= 1) {
+//                exit;
+//            }
+
+        }
+    }
+
+    protected function checkMediaByDatePeriod($media, $startDate, $endDate) {
 
     }
 

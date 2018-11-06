@@ -5,6 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 class PublicAccountScrapper {
 
     const USER_NAME = 'zapashny.ru';
+    const FILE_DIR = 'media/';
 
     protected $instaScrapper;
 
@@ -54,11 +55,19 @@ class PublicAccountScrapper {
      */
     protected function getCsvHeader()
     {
+//        $mediaCsv['link'] = 'Cсылка';
+//        $mediaCsv['comment_number'] = 'Количество коментариев';
+//        $mediaCsv['likes_number'] = 'Количество лайков';
+//        $mediaCsv['media_type'] = 'Медиа тип';
+//        $mediaCsv['created_at'] = 'Пост создан';
+//        $mediaCsv['caption'] = "Заголовок";
+
         $mediaCsv['link'] = 'Cсылка';
         $mediaCsv['comment_number'] = 'Количество коментариев';
         $mediaCsv['likes_number'] = 'Количество лайков';
         $mediaCsv['media_type'] = 'Медиа тип';
         $mediaCsv['created_at'] = 'Пост создан';
+        $mediaCsv['actions_summ'] = 'Сумма действий';
         $mediaCsv['caption'] = "Заголовок";
 
         return $mediaCsv;
@@ -69,8 +78,8 @@ class PublicAccountScrapper {
      */
     protected function writeToCsvFile($datas, $userName, $startDate, $endDate)
     {
-        $fileName = $userName ."_". $startDate ."_". $endDate;
-        $output = fopen($fileName,'w') or die("Can't open php://output");
+        $fileName = self::FILE_DIR . $userName ."_". $startDate ."_". $endDate . ".csv";
+        $output = fopen($fileName,'w') or die("Can't open file: " .  $fileName);
         fputcsv($output, $this->getCsvHeader());
 
         foreach($datas as $data) {
@@ -87,12 +96,13 @@ class PublicAccountScrapper {
      */
     protected function prepareMediaToCsv(\InstagramScraper\Model\Media $media)
     {
-        $mediaCsv['caption'] = $media->getCaption();
+        $mediaCsv['link'] = $media->getLink();
         $mediaCsv['comment_number'] = $media->getCommentsCount();
         $mediaCsv['likes_number'] = $media->getLikesCount();
         $mediaCsv['media_type'] = $media->getType();
         $mediaCsv['created_at'] = date("Y-m-d H:i:s", $media->getCreatedTime());
-        $mediaCsv['link'] = $media->getLink();
+        $mediaCsv['actions_summ'] = (int) $media->getLikesCount() + (int) $media->getCommentsCount();
+        $mediaCsv['caption'] = $media->getCaption();
 
         $this->mediasToCsv[] = $mediaCsv;
     }

@@ -1,5 +1,7 @@
 <?php
 
+use InstagramScraper\Instagram;
+
 require __DIR__ . '/vendor/autoload.php';
 
 class PublicAccountScrapper {
@@ -24,7 +26,8 @@ class PublicAccountScrapper {
     protected $mediasToCsv = [];
 
     public function __construct() {
-        $this->instaScrapper = new \InstagramScraper\Instagram();
+//        $this->instaScrapper = new \InstagramScraper\Instagram();
+        $this->instaScrapper =Instagram::withCredentials('oleg_molekulo', 'Landau009!', '/home/oleg/projects/ydd2/cache'); ;
         //$this->postsCount = Settings::POST_COUNT;
     }
 

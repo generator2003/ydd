@@ -10,9 +10,27 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/PublicAccountScrapper.php';
 require __DIR__ . '/Settings.php';
 
-$accName   = $argv[1];
-$startDate = convertStartDateToTimestamp($argv[2]);
-$EndDate   = convertEndDateToTimestamp($argv[3]);
+//$accName   = $argv[1];
+//$startDate = convertStartDateToTimestamp($argv[2]);
+//$EndDate   = convertEndDateToTimestamp($argv[3]);
+
+//
+//https://instagram.com/animonda.ru   C 1го Янаваря и по сегодня
+//https://instagram.com/evercleanru   C 1го Янаваря и по сегодня
+//https://instagram.com/naturaltrainerru C 1го июня
+
+//
+
+
+$accName   = 'oleg_molekulo';
+$startDate = convertStartDateToTimestamp('01.06.2021');
+$EndDate   = convertEndDateToTimestamp('17.12.2021');
+print_r($startDate);
+echo "\nAAAA\n";
+print_r($EndDate);
+
+
+
 
 $publicAccountScrapper = new publicAccountScrapper();
 try {

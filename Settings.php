@@ -8,6 +8,6 @@
 
 class Settings
 {
-    const POST_COUNT = 200;
+    const POST_COUNT = 50;
     //protected $postsCount = 300;  //600 Это 20 постов в день
 }

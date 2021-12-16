@@ -17,6 +17,9 @@ $EndDate   = convertEndDateToTimestamp($_POST['dateEnd']);
 
 //print_r($_POST);
 //exit;
+$accName   = 'shnurovs';
+$startDate = convertStartDateToTimestamp('08/01/2021');
+$EndDate   = convertEndDateToTimestamp('08/20/2021');
 
 $publicAccountScrapper = new publicAccountScrapper();
 try {
